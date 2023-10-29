@@ -1,15 +1,15 @@
 const nodemailer = require("nodemailer");
 const { config } = require("dotenv");
 const { MongoClient } = require("mongodb");
-const client = new MongoClient(
-  "mongodb+srv://cosmos:ayomide22689@cosmoscluster.o6ovlp8.mongodb.net/",
-  {
-    monitorCommands: true,
-  }
-);
 
-const customers = client.db("quickrents").collection("customers");
-config();
+// const client = new MongoClient(
+//   "mongodb+srv://cosmos:ayomide22689@cosmoscluster.o6ovlp8.mongodb.net/",
+//   {
+//     monitorCommands: true,
+//   }
+// );
+// const customers = client.db("quickrents").collection("customers");
+// config();
 
 async function getCustomers() {
   const data = await customers.find({}).toArray();
