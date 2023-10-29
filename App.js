@@ -4,7 +4,6 @@ const bodyParser = require("body-parser");
 const { config } = require("dotenv");
 config();
 const port = process.env.PORT;
-const path = require("path");
 const { sendMail, sendApproval, sendProcessing } = require("./Confirmation");
 const {
   newApplication,
