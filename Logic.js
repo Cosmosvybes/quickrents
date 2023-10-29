@@ -34,8 +34,7 @@ async function approveApplication(id) {
 }
 
 module.exports = {
-  approveApplication,
+  newApplication,
   processApplication,
   approveApplication,
-  getCustomers,
 };

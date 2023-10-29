@@ -10,7 +10,6 @@ const {
   newApplication,
   processApplication,
   approveApplication,
-  getCustomers,
 } = require("./Logic");
 
 app.use((req, res, next) => {
