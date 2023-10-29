@@ -1,6 +1,6 @@
 const nodemailer = require("nodemailer");
 const { config } = require("dotenv");
-const { MongoClient } = require("mongodb");
+// const { MongoClient } = require("mongodb");
 
 // const client = new MongoClient(
 //   "mongodb+srv://cosmos:ayomide22689@cosmoscluster.o6ovlp8.mongodb.net/",
@@ -9,7 +9,7 @@ const { MongoClient } = require("mongodb");
 //   }
 // );
 // const customers = client.db("quickrents").collection("customers");
-// config();
+config();
 
 // async function getCustomers() {
 //   const data = await customers.find({}).toArray();
