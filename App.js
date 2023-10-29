@@ -7,12 +7,13 @@ config();
 const port = process.env.PORT || 2000;
 
 import { sendMail, sendApproval, sendProcessing } from "./Confirmation.js";
+import { MongoClient } from "mongodb";
 
-import {
-  newApplication,
-  processApplication,
-  approveApplication,
-} from "./Logic.js";
+// import {
+//   newApplication,
+//   processApplication,
+//   approveApplication,
+// } from "./Logic.js";
 
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "http://localhost:1616");
@@ -31,8 +32,6 @@ app.use((req, res, next) => {
 
 app.use(urlencoded({ extended: true }));
 app.use(json());
-
-
 
 app.post("/api/apartment/application", async (req, res) => {
   const { firstname, lastname, state, email } = req.body;
