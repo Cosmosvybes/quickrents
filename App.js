@@ -5,21 +5,14 @@ const { urlencoded } = pkg;
 import { config } from "dotenv";
 config();
 const port = process.env.PORT || 2000;
-<<<<<<< HEAD
+
 import { sendMail, sendApproval, sendProcessing } from "./Confirmation.js";
-=======
-const { sendMail, sendApproval, sendProcessing } = require("./Confirmation.js");
->>>>>>> 7caa1aa70d82ec14ed388b5f45b04d69becb6acc
 
 import {
   newApplication,
   processApplication,
   approveApplication,
-<<<<<<< HEAD
 } from "./Logic.js";
-=======
-} = require("./Logic.js").default;
->>>>>>> 7caa1aa70d82ec14ed388b5f45b04d69becb6acc
 
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "http://localhost:1616");
