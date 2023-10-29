@@ -7,7 +7,7 @@ const client = new MongoClient(process.env.MONGO_URI, {
 });
 const customers = client.db("quickrents").collection("customers");
 
- async function newApplication(firstname, lastname, state) {
+ export default async function newApplication(firstname, lastname, state) {
   const response = await customers.insertOne({
     id: Math.floor(Math.random() * 765),
     firstname: firstname,
@@ -40,9 +40,4 @@ async function processApplication(id) {
   return response;
 }
 
-module.exports = {
-  getCustomers,
-  newApplication,
-  processApplication,
-  approveApplication,
-};
+// module.exports = {getCustomers,  newApplication, processApplication, approveApplication};
