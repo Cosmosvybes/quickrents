@@ -4,7 +4,7 @@ config();
 
 let client = new MongoClient(process.env.MONGO_URI);
 
-export function newApplication(firstname, lastname, state) {
+ async function newApplication(firstname, lastname, state) {
   return;
   //   const response = await customers.insertOne({
   //     id: Math.floor(Math.random() * 765),
@@ -17,7 +17,7 @@ export function newApplication(firstname, lastname, state) {
   //   return response;
 }
 
-export function processApplication(id) {
+ async function processApplication(id) {
   return;
   //   const response = await customers.updateOne(
   //     { id: Number(id) },
@@ -26,7 +26,7 @@ export function processApplication(id) {
   //   return response;
 }
 
-export function approveApplication(id) {
+ async function approveApplication(id) {
   return;
   //   const response = await customers.updateOne(
   //     { id: id },
@@ -35,7 +35,7 @@ export function approveApplication(id) {
   //   return response;
 }
 
-export default {
+module.exports = {
   newApplication,
   processApplication,
   approveApplication,
