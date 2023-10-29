@@ -23,7 +23,7 @@ const customers = client.db("quickrents").collection("customers");
   return data;
 }
 
-export async function processApplication(id) {
+async function processApplication(id) {
   const response = await customers.updateOne(
     { id: Number(id) },
     { $set: { status: "Processing" } }
