@@ -1,6 +1,8 @@
-// const { MongoClient } = require("mongodb");
+const { MongoClient } = require("mongodb");
 const { config } = require("dotenv");
 config();
+
+let client = new MongoClient(process.env.MONGO_URI);
 
 async function newApplication(firstname, lastname, state) {
   return;
