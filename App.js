@@ -7,7 +7,7 @@ config();
 const port = process.env.PORT || 2000;
 
 import { sendMail, sendApproval, sendProcessing } from "./Confirmation.js";
-import { MongoClient } from "mongodb";
+import mongoose from "mongoose";
 
 // import {
 //   newApplication,
