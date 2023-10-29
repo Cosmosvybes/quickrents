@@ -1,15 +1,14 @@
 const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
-
+const { config } = require("dotenv");
 config();
 const port = process.env.PORT || 2000;
 const { sendMail, sendApproval, sendProcessing } = require("./Confirmation");
 // const { approveApplication } = require("./Logic");
 
 const { MongoClient } = require("mongodb");
-const { config } = require("dotenv");
-config();
+
 
 const client = new MongoClient(
   "mongodb+srv://cosmos:ayomide22689@cosmoscluster.o6ovlp8.mongodb.net/",
