@@ -8,11 +8,11 @@ const port = process.env.PORT || 2000;
 
 import { sendMail, sendApproval, sendProcessing } from "./Confirmation.js";
 
-// import {
-//   newApplication,
-//   processApplication,
-//   approveApplication,
-// } from "./Logic.js";
+import {
+  newApplication,
+  processApplication,
+  approveApplication,
+} from "./Logic.js";
 
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "http://localhost:1616");
