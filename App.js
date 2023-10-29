@@ -12,36 +12,36 @@ const { sendMail, sendApproval, sendProcessing } = require("./Confirmation");
 //   approveApplication,
 // } = require("./renters");
 
-// app.use((req, res, next) => {
-//   res.setHeader("Access-Control-Allow-Origin", "http://localhost:1616");
-//   res.setHeader(
-//     "Access-Control-Allow-Methods",
-//     "GET, POST, PUT, PATCH, DELETE"
-//   );
-//   res.setHeader(
-//     "Access-Control-Allow-Headers",
-//     "Authorization",
-//     "Content-Type"
-//   );
-//   res.setHeader("Access-Control-Allow-Credientials", "true");
-//   next();
-// });
+app.use((req, res, next) => {
+  res.setHeader("Access-Control-Allow-Origin", "http://localhost:1616");
+  res.setHeader(
+    "Access-Control-Allow-Methods",
+    "GET, POST, PUT, PATCH, DELETE"
+  );
+  res.setHeader(
+    "Access-Control-Allow-Headers",
+    "Authorization",
+    "Content-Type"
+  );
+  res.setHeader("Access-Control-Allow-Credientials", "true");
+  next();
+});
 
-// app.use(bodyParser.urlencoded({ extended: true }));
-// app.use(express.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.json());
 
 // app.get("/api/admin", (req, res) => {});
 
-// app.post("/api/apartment/application", async (req, res) => {
-//   const { firstname, lastname, state, email } = req.body;
-//   try {
-//     const response = await newApplication(firstname, lastname, state);
-//     const emailStatus = await sendMail(email);
-//     res.send({ submitted: true, response, emailStatus });
-//   } catch (error) {
-//     res.send(error);
-//   }
-// });
+app.post("/api/apartment/application", async (req, res) => {
+  const { firstname, lastname, state, email } = req.body;
+  try {
+    // const response = await newApplication(firstname, lastname, state);
+    const emailStatus = await sendMail(email);
+    res.send({ submitted: true, response, emailStatus });
+  } catch (error) {
+    res.send(error);
+  }
+});
 
 // app.get("/api/customers", async (req, res) => {
 //   try {
