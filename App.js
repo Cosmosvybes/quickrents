@@ -32,7 +32,7 @@ app.use((req, res, next) => {
 app.use(urlencoded({ extended: true }));
 app.use(json());
 
-// app.get("/api/admin", (req, res) => {});
+
 
 app.post("/api/apartment/application", async (req, res) => {
   const { firstname, lastname, state, email } = req.body;
