@@ -6,7 +6,7 @@ const client = new MongoClient(process.env.MONGO_URI, {
 });
 const customers = client.db("quickrents").collection("customers");
 
-export async function newApplication(firstname, lastname, state) {
+ async function newApplication(firstname, lastname, state) {
   const response = await customers.insertOne({
     id: Math.floor(Math.random() * 765),
     firstname: firstname,
@@ -18,7 +18,7 @@ export async function newApplication(firstname, lastname, state) {
   return response;
 }
 
-export async function getCustomers() {
+ async function getCustomers() {
   const data = await customers.find({}).toArray();
   return data;
 }
@@ -31,7 +31,7 @@ export async function processApplication(id) {
   return response;
 }
 
-export async function approveApplication(id) {
+ async function approveApplication(id) {
   const response = await customers.updateOne(
     { id: id },
     { $set: { status: "Approved" } }
@@ -39,9 +39,9 @@ export async function approveApplication(id) {
   return response;
 }
 
-// module.exports = {
-//   getCustomers,
-//   newApplication,
-//   processApplication,
-//   approveApplication,
-// };
+module.exports = {
+  getCustomers,
+  newApplication,
+  processApplication,
+  approveApplication,
+};
