@@ -4,13 +4,13 @@ const bodyParser = require("body-parser");
 const { config } = require("dotenv");
 config();
 const port = process.env.PORT || 2000;
-const { sendMail, sendApproval, sendProcessing } = require("./Confirmation");
+const { sendMail, sendApproval, sendProcessing } = require("./Confirmation.js");
 
 const {
   newApplication,
   processApplication,
   approveApplication,
-} = require("./Logic").default;
+} = require("./Logic.js").default;
 
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "http://localhost:1616");
