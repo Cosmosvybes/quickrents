@@ -10,7 +10,7 @@ const {
   newApplication,
   processApplication,
   approveApplication,
-} = require("./Logic");
+} = require("./Logic").default;
 
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "http://localhost:1616");

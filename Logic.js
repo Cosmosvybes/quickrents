@@ -1,10 +1,10 @@
-const { MongoClient } = require("mongodb");
-const { config } = require("dotenv");
+import { MongoClient } from "mongodb";
+import { config } from "dotenv";
 config();
 
 let client = new MongoClient(process.env.MONGO_URI);
 
-async function newApplication(firstname, lastname, state) {
+export function newApplication(firstname, lastname, state) {
   return;
   //   const response = await customers.insertOne({
   //     id: Math.floor(Math.random() * 765),
@@ -17,7 +17,7 @@ async function newApplication(firstname, lastname, state) {
   //   return response;
 }
 
-async function processApplication(id) {
+export function processApplication(id) {
   return;
   //   const response = await customers.updateOne(
   //     { id: Number(id) },
@@ -26,7 +26,7 @@ async function processApplication(id) {
   //   return response;
 }
 
-async function approveApplication(id) {
+export function approveApplication(id) {
   return;
   //   const response = await customers.updateOne(
   //     { id: id },
@@ -35,7 +35,7 @@ async function approveApplication(id) {
   //   return response;
 }
 
-module.exports = {
+export default {
   newApplication,
   processApplication,
   approveApplication,
