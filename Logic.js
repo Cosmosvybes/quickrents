@@ -35,8 +35,8 @@ export async function approveApplication(id) {
   //   return response;
 }
 
-module.exports = {
-  newApplication,
-  processApplication,
-  approveApplication,
-};
+// module.exports = {
+//   newApplication,
+//   processApplication,
+//   approveApplication,
+// };
