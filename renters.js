@@ -1,14 +1,13 @@
 const { MongoClient } = require("mongodb");
 const { config } = require("dotenv");
 config();
-const mongo_url = process.env.MONGO_URL;
-const client = new MongoClient(mongo_url);
+const client = new MongoClient(process.env.MONGO_URL);
 
 const customers = client.db("quickrents").collection("customers");
 
 async function newApplication(firstname, lastname, state) {
   const response = await customers.insertOne({
-    id: Math.floor((Math.random() * 765)),
+    id: Math.floor(Math.random() * 765),
     firstname: firstname,
     lastname: lastname,
     state: state,
