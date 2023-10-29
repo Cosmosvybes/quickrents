@@ -1,5 +1,5 @@
-import { MongoClient } from "mongodb";
-import { config } from "dotenv";
+const { MongoClient } = require("mongodb");
+const { config } = require("dotenv");
 config();
 
 let client = new MongoClient(process.env.MONGO_URI);
