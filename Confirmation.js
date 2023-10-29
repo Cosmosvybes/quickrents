@@ -11,10 +11,10 @@ const { MongoClient } = require("mongodb");
 // const customers = client.db("quickrents").collection("customers");
 // config();
 
-async function getCustomers() {
-  const data = await customers.find({}).toArray();
-  return data;
-}
+// async function getCustomers() {
+//   const data = await customers.find({}).toArray();
+//   return data;
+// }
 
 const mailTransporter = nodemailer.createTransport({
   service: "gmail",
