@@ -1,6 +1,6 @@
 const { MongoClient } = require("mongodb");
-// const { config } = require("dotenv");
-// config();
+const { config } = require("dotenv");
+config();
 
 const client = new MongoClient(
   "mongodb+srv://cosmos:ayomide22689@cosmoscluster.o6ovlp8.mongodb.net/",
@@ -44,4 +44,9 @@ async function approveApplication(id) {
   return response;
 }
 
-module.exports = { approveApplication };
+module.exports = {
+  approveApplication,
+  processApplication,
+  approveApplication,
+  getCustomers,
+};
