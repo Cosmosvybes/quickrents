@@ -5,12 +5,7 @@ const { config } = require("dotenv");
 config();
 const port = process.env.PORT || 2000;
 const { sendMail, sendApproval, sendProcessing } = require("./Confirmation");
-// const {
-//   newApplication,
-//   getCustomers,
-//   processApplication,
-//   approveApplication,
-// } = require("./renters");
+const {newApplication, getCustomers,processApplication,approveApplication} = require("./renters");
 
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "http://localhost:1616");
