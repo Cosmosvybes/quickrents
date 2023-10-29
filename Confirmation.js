@@ -4,7 +4,7 @@ config();
 
 const mailTransporter = nodemailer.createTransport({
   service: "gmail",
-  auth: { user: "myquickrents@gmail.com", pass: process.env.PASS },
+  auth: { user: "myquickrents@gmail.com", pass: process.env.GOOGLE_PASS },
 });
 
 async function sendMail(email) {
