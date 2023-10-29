@@ -1,11 +1,12 @@
 const { MongoClient } = require("mongodb");
 const { config } = require("dotenv");
 config();
-const client = new MongoClient(process.env.MONGO_URL);
-
+const client = new MongoClient(process.env.MONGO_URI, {
+  monitorCommands: true,
+});
 const customers = client.db("quickrents").collection("customers");
 
-async function newApplication(firstname, lastname, state) {
+export async function newApplication(firstname, lastname, state) {
   const response = await customers.insertOne({
     id: Math.floor(Math.random() * 765),
     firstname: firstname,
@@ -17,12 +18,12 @@ async function newApplication(firstname, lastname, state) {
   return response;
 }
 
-async function getCustomers() {
+export async function getCustomers() {
   const data = await customers.find({}).toArray();
   return data;
 }
 
-async function processApplication(id) {
+export async function processApplication(id) {
   const response = await customers.updateOne(
     { id: Number(id) },
     { $set: { status: "Processing" } }
@@ -30,7 +31,7 @@ async function processApplication(id) {
   return response;
 }
 
-async function approveApplication(id) {
+export async function approveApplication(id) {
   const response = await customers.updateOne(
     { id: id },
     { $set: { status: "Approved" } }
@@ -38,9 +39,9 @@ async function approveApplication(id) {
   return response;
 }
 
-module.exports = {
-  getCustomers,
-  newApplication,
-  processApplication,
-  approveApplication,
-};
+// module.exports = {
+//   getCustomers,
+//   newApplication,
+//   processApplication,
+//   approveApplication,
+// };
