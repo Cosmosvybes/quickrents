@@ -1,5 +1,5 @@
-const nodemailer = require("nodemailer");
-const { config } = require("dotenv");
+import nodemailer from "nodemailer";
+import { config } from "dotenv";
 
 config();
 
@@ -8,7 +8,7 @@ const mailTransporter = nodemailer.createTransport({
   auth: { user: "myquickrents@gmail.com", pass: process.env.GOOGLE_PASS },
 });
 
-async function sendMail(email) {
+export async function sendMail(email) {
   const data = mailTransporter.sendMail({
     to: email,
     headers: "Application confirmation",
@@ -27,7 +27,7 @@ async function sendMail(email) {
   });
   return data;
 }
-async function sendProcessing(email) {
+export async function sendProcessing(email) {
   const data = mailTransporter.sendMail({
     to: email,
     headers: "Application is being process",
@@ -45,7 +45,7 @@ async function sendProcessing(email) {
   });
   return data;
 }
-async function sendApproval(email) {
+export async function sendApproval(email) {
   const data = mailTransporter.sendMail({
     to: email,
     headers: "Application confirmation",
@@ -64,4 +64,4 @@ async function sendApproval(email) {
   return data;
 }
 
-module.exports = { sendMail, sendApproval, sendProcessing };
+// module.exports = { sendMail, sendApproval, sendProcessing };

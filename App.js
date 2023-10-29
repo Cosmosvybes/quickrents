@@ -1,16 +1,17 @@
-const express = require("express");
+import express, { json } from "express";
 const app = express();
-const bodyParser = require("body-parser");
-const { config } = require("dotenv");
+import pkg from "body-parser";
+const { urlencoded } = pkg;
+import { config } from "dotenv";
 config();
 const port = process.env.PORT || 2000;
-const { sendMail, sendApproval, sendProcessing } = require("./Confirmation");
+import { sendMail, sendApproval, sendProcessing } from "./Confirmation.js";
 
-const {
+import {
   newApplication,
   processApplication,
   approveApplication,
-} = require("./Logic").default;
+} from "./Logic.js";
 
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "http://localhost:1616");
@@ -27,15 +28,15 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(express.json());
+app.use(urlencoded({ extended: true }));
+app.use(json());
 
 // app.get("/api/admin", (req, res) => {});
 
 app.post("/api/apartment/application", async (req, res) => {
   const { firstname, lastname, state, email } = req.body;
   try {
-    const response = await newApplication(firstname, lastname, state);
+    const response = newApplication(firstname, lastname, state);
     const emailStatus = await sendMail(email);
     res.send({ submitted: true, response, emailStatus });
   } catch (error) {
@@ -55,7 +56,7 @@ app.get("/api/customers", async (req, res) => {
 app.patch("/api/process/application", async (req, res) => {
   const { id, email } = req.body;
   try {
-    const data = await processApplication(id);
+    const data = processApplication(id);
     const emailStatus = await sendProcessing(email);
     res.send({ data, emailStatus });
   } catch (error) {
@@ -66,7 +67,7 @@ app.patch("/api/process/application", async (req, res) => {
 app.patch("/api/approve/application", async (req, res) => {
   const { id, email } = req.body;
   try {
-    const data = await approveApplication(id);
+    const data = approveApplication(id);
     const approvalStatus = await sendApproval(email);
     res.send({ data, approvalStatus });
   } catch (error) {
