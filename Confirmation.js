@@ -77,4 +77,4 @@ async function sendApproval(email) {
   return data;
 }
 
-module.exports = { sendMail, sendApproval, sendProcessing, getCustomers };
+module.exports = { sendMail, sendApproval, sendProcessing};
