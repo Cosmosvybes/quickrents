@@ -2,14 +2,7 @@ const { MongoClient } = require("mongodb");
 const { config } = require("dotenv");
 config();
 
-const client = new MongoClient(
-  "mongodb+srv://cosmos:ayomide22689@cosmoscluster.o6ovlp8.mongodb.net/",
-  {
-    monitorCommands: true,
-  }
-);
 
-const customers = client.db("quickrents").collection("customers");
 
 async function newApplication(firstname, lastname, state) {
   const response = await customers.insertOne({
@@ -23,10 +16,7 @@ async function newApplication(firstname, lastname, state) {
   return response;
 }
 
-async function getCustomers() {
-  const data = await customers.find({}).toArray();
-  return data;
-}
+
 
 async function processApplication(id) {
   const response = await customers.updateOne(
