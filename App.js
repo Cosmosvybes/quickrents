@@ -8,7 +8,12 @@ const port = process.env.PORT || 2000;
 
 const { sendMail, sendApproval, sendProcessing } = require("./Confirmation.js");
 
-
+const {
+  applicationForm,
+  approveApplication,
+  processApplication,
+  getCustomers,
+} = require("./Logic.js");
 
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "http://localhost:1616");
@@ -27,7 +32,7 @@ app.use((req, res, next) => {
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(express.static(path.join(__dirname , "dist")));
+app.use(express.static(path.join(__dirname, "dist")));
 
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "dist", "index.html"));
@@ -36,7 +41,7 @@ app.get("/", (req, res) => {
 app.post("/api/apartment/application", async (req, res) => {
   const { firstname, lastname, state, email } = req.body;
   try {
-    const response = newApplication(firstname, lastname, state);
+    const response = applicationForm(firstname, lastname, email, state);
     const emailStatus = await sendMail(email);
     res.send({ submitted: true, response, emailStatus });
   } catch (error) {
