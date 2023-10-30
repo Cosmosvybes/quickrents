@@ -61,7 +61,7 @@ app.get("/api/customers", async (req, res) => {
 app.patch("/api/process/application", async (req, res) => {
   const { id, email } = req.body;
   try {
-    const data = processApplication(id);
+    const data = await processApplication(id);
     const emailStatus = await sendProcessing(email);
     res.send({ data, emailStatus });
   } catch (error) {
@@ -72,7 +72,7 @@ app.patch("/api/process/application", async (req, res) => {
 app.patch("/api/approve/application", async (req, res) => {
   const { id, email } = req.body;
   try {
-    const data = approveApplication(id);
+    const data = await approveApplication(id);
     const approvalStatus = await sendApproval(email);
     res.send({ data, approvalStatus });
   } catch (error) {
