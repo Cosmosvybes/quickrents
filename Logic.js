@@ -1,7 +1,7 @@
-import mongoose from "mongoose";
-import { config } from "dotenv";
-// const mongoose = require("mongoose");
-// const { config } = require("dotenv");
+// import mongoose from "mongoose";
+// import { config } from "dotenv";
+const mongoose = require("mongoose");
+const { config } = require("dotenv");
 import Customer from "./Model.js";
 config();
 
