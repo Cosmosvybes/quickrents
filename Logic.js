@@ -1,42 +1,36 @@
-import { MongoClient } from "mongodb";
+import mongoose from "mongoose";
 import { config } from "dotenv";
+// const mongoose = require("mongoose");
+// const { config } = require("dotenv");
+import Customer from "./Model.js";
 config();
 
-let client = new MongoClient(process.env.MONGO_URI);
+// const db = mongoose.connection;
+// mongoose.connect(process.env.MONGO_URI);
+// db.on("error", (err) => {
+//   if (err) console.log("Unable to connect to the database");
+// });
+// db.once("open", (response) => {
+//   console.log("connected to mongodb");
+// });
 
-export async function newApplication(firstname, lastname, state) {
-  return;
-  //   const response = await customers.insertOne({
-  //     id: Math.floor(Math.random() * 765),
-  //     firstname: firstname,
-  //     lastname: lastname,
-  //     state: state,
-  //     status: "Pending",
-  //     year: new Date().getFullYear(),
-  //   });
-  //   return response;
-}
+const data = new Customer({
+  id: Math.floor(Math.random() * 765),
+  firstname: "Ayomide",
+  lastname: "chris",
+  email: "alfredchrisayo@gmail.com",
+  status: "Pending",
+  state: "California",
+  year: 2024,
+});
 
-export async function processApplication(id) {
-  return;
-  //   const response = await customers.updateOne(
-  //     { id: Number(id) },
-  //     { $set: { status: "Processing" } }
-  //   );
-  //   return response;
-}
+data
+  .save()
+  .then((data) => {
+    console.log(data);
+  })
+  .catch((err) => {
+    console.log(err);
+  });
 
-export async function approveApplication(id) {
-  return;
-  //   const response = await customers.updateOne(
-  //     { id: id },
-  //     { $set: { status: "Approved" } }
-  //   );
-  //   return response;
-}
-
-// module.exports = {
-//   newApplication,
-//   processApplication,
-//   approveApplication,
-// };
+// applyForApartment("Ayomide", "chris", "alfredchrisayo@gmail.com", "California");

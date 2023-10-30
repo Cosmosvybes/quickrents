@@ -1,19 +1,14 @@
-import express, { json } from "express";
+const express = require("express");
 const app = express();
-import pkg from "body-parser";
-const { urlencoded } = pkg;
-import { config } from "dotenv";
+const bodyParser = require("body-parser");
+const { config } = require("dotenv");
+const path = require("path");
 config();
 const port = process.env.PORT || 2000;
 
-import { sendMail, sendApproval, sendProcessing } from "./Confirmation.js";
-import mongoose from "mongoose";
+const { sendMail, sendApproval, sendProcessing } = require("./Confirmation.js");
 
-// import {
-//   newApplication,
-//   processApplication,
-//   approveApplication,
-// } from "./Logic.js";
+
 
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "http://localhost:1616");
@@ -30,8 +25,13 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use(urlencoded({ extended: true }));
-app.use(json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.json());
+app.use(express.static(path.join(__dirname , "dist")));
+
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "dist", "index.html"));
+});
 
 app.post("/api/apartment/application", async (req, res) => {
   const { firstname, lastname, state, email } = req.body;
